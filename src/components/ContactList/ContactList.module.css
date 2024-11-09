@@ -1,0 +1,13 @@
+.contactListWrapper {
+   
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-left: 0;
+    
+}
+
+/* .listItem {
+    margin-bottom: 16px;
+} */
