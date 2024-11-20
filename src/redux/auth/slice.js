@@ -1,4 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  apiRegisterUser,
+  apiLoginUser,
+  apiLogoutUser,
+  apiRefreshUser,
+} from './operations';
 
 const INITIAL_STATE = {
   user: { name: null, email: null },
@@ -13,48 +19,64 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: INITIAL_STATE,
   reducers: {},
-});
- extraReducers: (builder) =>
+  extraReducers: builder =>
     builder
-      .addCase(apiRegisterUser.pending, (state) => {
+      // Реєстрація
+      .addCase(apiRegisterUser.pending, state => {
         state.isLoading = true;
-        state.error = null;
+        state.error = null; // Обнуляємо помилки
       })
       .addCase(apiRegisterUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         state.token = action.payload.token;
-        state.userData = action.payload.user;
+        state.user = action.payload.user;
       })
       .addCase(apiRegisterUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-
-      .addCase(apiLoginUser.pending, (state) => {
+      // Вхід
+      .addCase(apiLoginUser.pending, state => {
         state.isLoading = true;
-        state.error = null;
+        state.error = null; // Обнуляємо помилки
       })
       .addCase(apiLoginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isLoggedIn = true;
         state.token = action.payload.token;
-        state.userData = action.payload.user;
+        state.user = action.payload.user;
       })
       .addCase(apiLoginUser.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-      ,
+      // Вихід
+      .addCase(apiLogoutUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null; // Обнуляємо помилки
+      })
+      .addCase(apiLogoutUser.fulfilled, () => {
+        return INITIAL_STATE; // Очищуємо всі стани
+      })
+      .addCase(apiLogoutUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      // Оновлення
+      .addCase(apiRefreshUser.pending, state => {
+        state.isRefreshing = true;
+        state.error = null; // Обнуляємо помилки
+      })
+      .addCase(apiRefreshUser.fulfilled, (state, action) => {
+        state.isRefreshing = false;
+        state.isLoggedIn = true;
+        state.user = action.payload;
+      })
+      .addCase(apiRefreshUser.rejected, (state, action) => {
+        state.isRefreshing = false;
+        state.error = action.payload;
+      }),
 });
 
-export const selectUserData = state => state.auth.userData
-export const selectUserDataIsLoading = state => state.auth.isLoading
-export const selectUserDataError = state => state.auth.error
-export const selectUserDataIsLoggedIn = state => state.auth.isLoggedIn
-export const selectUserDataIsRefreshing = state => state.auth.isRefreshing
-export const selectUserDataToken = state => state.auth.token
-
 export const authReducer = authSlice.reducer;
-
-

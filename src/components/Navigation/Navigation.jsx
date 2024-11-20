@@ -1,4 +1,4 @@
-// components/Navigation/Navigation.jsx
+
 import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import css from './Navigation.module.css';
@@ -15,13 +15,13 @@ const Navigation = () => {
             <NavLink className={buildCssClasses} to="/">
               Home
             </NavLink>
-            <NavLink className={buildCssClasses} to="/register">
+            {/* <NavLink className={buildCssClasses} to="/register">
               Register
             </NavLink>
 
             <NavLink className={buildCssClasses} to="/login">
               Login
-            </NavLink>
+            </NavLink> */}
 
             <NavLink className={buildCssClasses} to="/contacts">
               Contacts

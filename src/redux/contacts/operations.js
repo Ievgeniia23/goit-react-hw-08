@@ -1,26 +1,47 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const apiLoginUser = createAsyncThunk(
-  'auth/loginUser',
-  async (formData, thunkApi) => {
-    // formData -> { "email": "across@mail.com",  "password": "examplepwd12345" }
+// Базовий URL для нової API
+const API_BASE_URL = 'https://connections-api.goit.global';
+
+// Операція для отримання всіх контактів
+export const fetchContacts = createAsyncThunk(
+  'contacts/getAllContacts',
+  async (_, thunkAPI) => {
     try {
-      const { data } = await authInstance.post('/users/login', formData);
-      // {
-      //     "user": {
-      //         "name": "John Taco",
-      //         "email": "1231241sadwda213wd@gmail.com"
-      //     },
-      //     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzJiYmYxOWM0OTVlZDZlMjVmMzhkYzUiLCJpYXQiOjE3MzA5MjAyMTd9.YLCxvnYkkYJDZzyDlOTJs71Ulev9u4OAEVP7a3OVb8c"
-      // }
-
-      setToken(data.token);
-      console.log('data: ', data);
-
-      return data;
+      // Змінюємо endpoint на новий API
+      const response = await axios.get(`${API_BASE_URL}/contacts`);
+      return response.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async (contact, thunkAPI) => {
+    try {
+      // Змінюємо endpoint на новий API
+      const response = await axios.post(`${API_BASE_URL}/contacts`, contact);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Операція для видалення контакту
+export const deleteContact = createAsyncThunk(
+  'contacts/deleteContact',
+  async (contactId, thunkAPI) => {
+    try {
+      // Змінюємо endpoint на новий API
+      await axios.delete(`${API_BASE_URL}/contacts/${contactId}`);
+      return contactId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

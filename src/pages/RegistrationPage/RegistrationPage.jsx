@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
-import RegistrationForm from './RegistrationForm';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import { apiRegisterUser } from '../../redux/auth/operations';
 
 const RegistrationPage = () => {

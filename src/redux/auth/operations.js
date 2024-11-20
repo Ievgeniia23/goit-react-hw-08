@@ -23,7 +23,6 @@ export const apiRegisterUser = createAsyncThunk(
     try {
       const { data } = await authInstance.post('/users/signup', formData);
       setToken(data.token); // Встановлення токена після успішної реєстрації
-      console.log('data:', data);
       return data; // Повертаємо дані користувача
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -38,8 +37,41 @@ export const apiLoginUser = createAsyncThunk(
     try {
       const { data } = await authInstance.post('/users/login', formData);
       setToken(data.token); // Встановлення токена після успішного входу
-      console.log('Login data:', data);
       return data; // Повертаємо дані користувача
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Вихід користувача
+export const apiLogoutUser = createAsyncThunk(
+  'auth/logoutUser',
+  async (_, thunkAPI) => {
+    try {
+      await authInstance.post('/users/logout'); // Використовуємо authInstance
+      clearToken(); // Очищення токена після виходу
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Оновлення користувача
+export const apiRefreshUser = createAsyncThunk(
+  'auth/refreshUser',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+
+    if (!token) {
+      return thunkAPI.rejectWithValue('No valid token found');
+    }
+
+    try {
+      setToken(token); // Встановлюємо токен у заголовках
+      const { data } = await authInstance.get('/users/current'); // Використовуємо authInstance
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

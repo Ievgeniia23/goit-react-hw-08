@@ -69,7 +69,7 @@ const numberFieldId = useId();
 };
 
 
-export default ContactForm
+export default ContactForm;
 
 
 

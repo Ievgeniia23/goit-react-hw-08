@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux';
 import { apiLoginUser } from '../../redux/auth/operations';
 import { nanoid } from 'nanoid';
-import LoginForm from './LoginForm';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
 const LoginPage = () => {
   const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useId } from "react";
 import PropTypes from "prop-types";
 import * as Yup from "yup";
-import css from "./RegistrationPage.module.css";
+import css from "./RegistrationForm.module.css";
 
 const RegistrationForm = ({ onSubmit }) => {
  
