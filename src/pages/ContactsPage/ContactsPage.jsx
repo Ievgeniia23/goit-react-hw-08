@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { fetchContacts } from '../../redux/contacts/operations';
 import ContactList from '../../components/ContactList/ContactList';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import Filter from '../../components/Filter/Filter';
+import SearchBox from '../../components/SearchBox/SearchBox';
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const ContactsPage = () => {
     <div>
       <h1>Your Contacts</h1>
       <ContactForm />
-      <Filter />
+      <SearchBox />
       {isLoading && <p>Loading contacts...</p>}
       <ContactList contacts={contacts} />
     </div>

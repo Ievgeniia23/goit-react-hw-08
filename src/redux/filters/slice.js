@@ -16,4 +16,4 @@ export const { setNameFilter } = filtersSlice.actions; // Експортуємо
 
 export const filtersReducer = filtersSlice.reducer; // Експортуємо reducer
 
-export const selectNameFilter = state => state.filters.name;
+// export const selectNameFilter = state => state.filters.name;
