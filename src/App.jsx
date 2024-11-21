@@ -39,16 +39,16 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route
               path="/register"
-              element={<RestrictedRoute component={RegistrationPage} />}
+              element={<RestrictedRoute element={RegistrationPage} />}
             />
             <Route
               path="/login"
-              element={<RestrictedRoute component={LoginPage} />}
+              element={<RestrictedRoute element={LoginPage} />}
             />
 
             <Route
               path="/contacts"
-              element={<PrivateRoute component={ContactsPage} />}
+              element={<PrivateRoute element={ContactsPage} />}
             />
           </Routes>
         </Layout>
