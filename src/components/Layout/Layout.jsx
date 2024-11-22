@@ -1,14 +1,14 @@
-import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import AppBar from '../AppBar/AppBar';
+import css from './Layout.module.css'
 
-const Layout = () => {
+const Layout = ({ children }) => {
   return (
-    <>
+    <div className={css.wrap}>
       <AppBar />
-      <main>
-        <Outlet /> {/* Тут рендеряться дочірні маршрути */}
-      </main>
-    </>
+      <section className={css.section}>{children}</section>
+      <Toaster position="top-center" reverseOrder={false} />
+    </div>
   );
 };
 

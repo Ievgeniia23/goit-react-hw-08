@@ -6,7 +6,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import { apiRefreshUser } from './redux/auth/operations';
 import css from './App.module.css';
-import Layout from './components/Layout/Layout'
+import Layout from './components/Layout/Layout';
 
 // Ліниве завантаження сторінок
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
@@ -16,7 +16,7 @@ const RegistrationPage = lazy(() =>
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const ContactsPage = lazy(() => import('./pages/ContactsPage/ContactsPage'));
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(state => state.auth.isRefreshing);
 
@@ -32,29 +32,40 @@ function App() {
 
   return (
     <Suspense fallback={<Loader />}>
-      <main className={css.mainWrapper}>
-        <Layout>
+      {/* Загальне обгортання Layout */}
+      <Layout>
+        <main className={css.mainWrapper}>
           <Routes>
-          
             <Route path="/" element={<HomePage />} />
             <Route
               path="/register"
-              element={<RestrictedRoute element={RegistrationPage} />}
+              element={
+                <RestrictedRoute
+                  element={<RegistrationPage />}
+                  redirectTo="/"
+                />
+              }
             />
             <Route
               path="/login"
-              element={<RestrictedRoute element={LoginPage} />}
+              element={
+                <RestrictedRoute
+                  element={<LoginPage />}
+                  redirectTo="/contacts"
+                />
+              }
             />
-
             <Route
               path="/contacts"
-              element={<PrivateRoute element={ContactsPage} />}
+              element={
+                <PrivateRoute element={<ContactsPage />} redirectTo="/login" />
+              }
             />
           </Routes>
-        </Layout>
-      </main>
+        </main>
+      </Layout>
     </Suspense>
   );
-}
+};
 
 export default App;
