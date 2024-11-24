@@ -31,7 +31,6 @@ const LoginForm = ({ onSubmit }) => {
       onSubmit={onSubmit}
     >
       <Form className={css.formWrapper}>
-        
         <label className={css.formLabel} htmlFor={emailFieldId}>
           <span>Email:</span>
         </label>
@@ -56,9 +55,8 @@ const LoginForm = ({ onSubmit }) => {
         />
         <ErrorMessage name="password" component="span" className={css.error} />
 
-        
-        <button type="submit" className={css.btnSubmit}>
-           Sign In
+        <button type="submit" className={css.btnForm}>
+          Sign In
         </button>
       </Form>
     </Formik>

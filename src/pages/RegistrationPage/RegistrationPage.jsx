@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { nanoid } from 'nanoid';
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
 import { apiRegisterUser } from '../../redux/auth/operations';
+import css from './RegistrationPage.module.css'
 
 const RegistrationPage = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div>
+    <div className={css.registerWrap}>
       <h1>Register</h1>
       <RegistrationForm onSubmit={handleSubmit} />
     </div>

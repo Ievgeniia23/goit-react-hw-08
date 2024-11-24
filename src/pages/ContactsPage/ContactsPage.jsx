@@ -11,6 +11,8 @@ const ContactsPage = () => {
   const isLoading = useSelector(state => state.contacts.loading);
 
   useEffect(() => {
+    console.log('Fetching contacts...');
+
     dispatch(fetchContacts());
   }, [dispatch]);
 
@@ -21,6 +23,7 @@ const ContactsPage = () => {
       <SearchBox />
       {isLoading && <p>Loading contacts...</p>}
       <ContactList contacts={contacts} />
+      
     </div>
   );
 };

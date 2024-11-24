@@ -1,18 +1,26 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { authInstance } from '../auth/operations';
+
+
 
 // Базовий URL для нової API
-const API_BASE_URL = 'https://connections-api.goit.global';
+// const API_BASE_URL = 'https://connections-api.goit.global';
 
 // Операція для отримання всіх контактів
 export const fetchContacts = createAsyncThunk(
   'contacts/getAllContacts',
   async (_, thunkAPI) => {
     try {
-      // Змінюємо endpoint на новий API
-      const response = await axios.get(`${API_BASE_URL}/contacts`);
+      // // Змінюємо endpoint на новий API
+      // const response = await axios.get(`${API_BASE_URL}/contacts`);
+
+      const response = await authInstance.get('/contacts'); // Використовуємо authInstance
+      console.log('Contacts fetched:', response.data);
+
       return response.data;
     } catch (error) {
+      console.error('Error fetching contacts:', error.message); // Лог помилки
+
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -24,7 +32,7 @@ export const addContact = createAsyncThunk(
   async (contact, thunkAPI) => {
     try {
       // Змінюємо endpoint на новий API
-      const response = await axios.post(`${API_BASE_URL}/contacts`, contact);
+      const response = await authInstance.post(`/contacts`, contact);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -38,7 +46,7 @@ export const deleteContact = createAsyncThunk(
   async (contactId, thunkAPI) => {
     try {
       // Змінюємо endpoint на новий API
-      await axios.delete(`${API_BASE_URL}/contacts/${contactId}`);
+      await authInstance.delete(`/contacts/${contactId}`);
       return contactId;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -46,6 +46,8 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.token = action.payload.token;
         state.user = action.payload.user;
+
+        console.log('Token set in Redux:', state.token);
       })
       .addCase(apiLoginUser.rejected, (state, action) => {
         state.isLoading = false;

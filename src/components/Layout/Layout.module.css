@@ -1,11 +1,13 @@
 .section {
-  padding: 15px 30px;
+  /* margin: 0; */
+  padding:0;
+  margin-top: 80px;
 }
-.wrap {
+/* .wrap {
   background: linear-gradient(
     312deg,
     rgba(140, 66, 169, 0.19949229691876746) 2%,
     rgba(230, 154, 47, 0.3479516806722689) 20%,
     rgba(131, 58, 180, 0.0006127450980392135) 96%
   );
-}
+} */

@@ -1,10 +1,7 @@
-.homeWrapper {
+.homePageWrap {
 width: 100%;
 padding:80px 60px;
 margin-top: 0;
+text-align: center;
 }
 
-.listTitle {
-    /* margin-top: 0; */
-    text-align: left;
-}

@@ -8,6 +8,8 @@ export const authInstance = axios.create({
 
 // Встановлення токена в заголовки
 export const setToken = token => {
+
+  console.log('Setting token:', token);
   authInstance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 

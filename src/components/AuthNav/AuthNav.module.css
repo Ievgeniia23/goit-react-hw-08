@@ -1,0 +1,40 @@
+.navRight {
+  display: flex;
+  gap: 20px;
+}
+
+
+
+
+
+
+
+
+
+.wrap {
+  /* position: fixed; */
+  top: 40px;
+  /* left: 400px; */
+  right: 60px;
+}
+
+/* nav {
+  display: flex;
+  justify-content: flex-start; 
+  gap: 20px; 
+} */
+
+.link {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.active {
+  color: rgb(129, 97, 235); 
+}

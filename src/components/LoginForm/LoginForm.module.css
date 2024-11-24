@@ -1,0 +1,52 @@
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    border: 2px solid gray;
+    padding: 12px;
+    width: 300px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    
+}
+.formField {
+
+ font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  padding: 8px;
+  margin-top: 0px;
+  width: 270px;
+  border-radius: 6px;
+
+
+
+}
+
+.formField::placeholder {
+  color: #d7d1d1; 
+  font-size: 14px; 
+  font-style: italic;
+  
+}
+
+.formLabel {
+    color: rgb(71, 7, 18);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+ }
+.error {
+  color: #eb19d2; 
+  font-size: 14px; 
+  font-style: italic;
+  margin-top: 0;
+  text-align: left;
+  }
+
+  .btnForm {
+    background-color: rgb(172, 169, 169) ;
+    margin-top: 20px;
+    color: rgb(120, 72, 72);
+  }

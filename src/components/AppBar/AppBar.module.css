@@ -1,0 +1,32 @@
+/* AppBar.module.css */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  background-color: #031557d4;
+  padding: 0 60px;
+  height: 70px;
+  box-shadow: 0 12px 6px rgba(64, 9, 244, 0.5);
+  z-index: 1000;
+
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between; /* Розділяє навігацію на ліву та праву частину */
+  align-items: center;
+  width: 100%;
+}
+
+.navLeft {
+  display: flex;
+  gap: 20px; /* Відступи між лінками зліва */
+}
+
+.navRight {
+  display: flex;
+  gap: 20px; /* Відступи між лінками справа */
+}

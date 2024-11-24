@@ -5,7 +5,7 @@ import Loader from './components/Loader/Loader';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import { apiRefreshUser } from './redux/auth/operations';
-import css from './App.module.css';
+// import css from './App.module.css';
 import Layout from './components/Layout/Layout';
 
 // Ліниве завантаження сторінок
@@ -34,7 +34,7 @@ const App = () => {
     <Suspense fallback={<Loader />}>
       {/* Загальне обгортання Layout */}
       <Layout>
-        <main className={css.mainWrapper}>
+        {/* <main className={css.mainWrapper}> */}
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
@@ -62,7 +62,7 @@ const App = () => {
               }
             />
           </Routes>
-        </main>
+        {/* </main> */}
       </Layout>
     </Suspense>
   );

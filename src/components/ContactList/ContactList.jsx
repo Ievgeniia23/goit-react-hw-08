@@ -8,7 +8,9 @@ const ContactList = () => {
    const dispatch = useDispatch();
   
   const filteredContacts = useSelector(selectFilteredContacts);
-
+  console.log('Filtered contacts:', filteredContacts);
+  
+  
   return (
     <ul className={css.contactListWrapper}>
       {filteredContacts.map(contact => (

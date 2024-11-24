@@ -7,20 +7,21 @@ const buildCssClasses = ({ isActive }) =>
 
 const AuthNav = () => {
   return (
-    <div className={css.wrap}>
-      <nav>
-     
-        <NavLink className={buildCssClasses} to="/register">
-          Register
-        </NavLink>
+    <nav className={css.navRight}>
+  
+   
+      <NavLink className={buildCssClasses} to="/register">
+        Register
+      </NavLink>
 
-        <NavLink className={buildCssClasses} to="/login">
-          Login
-        </NavLink>
+      <NavLink className={buildCssClasses} to="/login">
+        Login
+      </NavLink>
+  
 
-      </nav>
+  
 
-    </div>
+    </nav>
   );
 };
 
